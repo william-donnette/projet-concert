@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scènes{% endblock %}
+
+{% block body %}
+    <h1>Toutes les salles de concert</h1>
+    <a class="btn btn-primary" href="{{ path('scene_new') }}">Ajouter une Scène</a>
+
+    <ul>
+        {% for scene in scenes %}
+        <li>
+        <a href="{{ path('scene_show', {'id': scene.id}) }}">{{scene.getAdress()}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

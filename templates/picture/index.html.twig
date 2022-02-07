@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pictures{% endblock %}
+
+{% block body %}
+    <h1>Galerie d'Images</h1>
+
+{% if app.user and app.user.isAdmin() %}
+    <a class="btn btn-primary" href="{{ path('picture_new') }}">Ajouter une nouvelle image</a>
+    {% endif %}
+
+    <ul style="display:flex;flex-wrap:wrap;list-style-type : none;justify-content:space-between">
+
+            {% for picture in pictures %}
+
+                <li>
+
+                {% include 'picture/card.html.twig' with {picture:picture} only %}
+
+                </li>
+
+            {% endfor %}
+
+</ul>
+
+{% endblock %}

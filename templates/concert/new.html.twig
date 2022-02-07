@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Création de Concert{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau concert</h1>
+
+    {{ include('concert/_form.html.twig') }}
+
+    <a href="{{ path('concert_index') }}">Retour à la liste</a>
+{% endblock %}

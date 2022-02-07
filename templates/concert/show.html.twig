@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concert - {{concert.getBand().getName()}} - {{concert.getDate().format('d/m/Y')}}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/paper-kit.css">
+{% endblock %}
+
+{% block body %}
+    <div class="page-header section-dark" style="background-image: url('/{{concert.getBand().getPicture().getPath()}}')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <h1 class="presentation-title">{{concert.getBand().getName()}} </h1>
+        </div>
+        <h2 class="presentation-subtitle text-center">en Concert le {{concert.getDate().format('d/m/Y')}}</h2>
+        <h3 class="presentation-subtitle text-center">{{concert.getScene() ? concert.getScene().getAdress() : ''}}</h3>
+      </div>
+    </div>
+  </div>
+
+
+<section style="display:flex;flex-direction:row;margin:10px;width:100%;justify-content:space-between;">
+    <a href="{{ path('band_show', {'id': concert.getBand().id}) }}" class="btn btn-link">Voir le Groupe</a>
+        {% if app.user and app.user.isAdmin() %}
+
+    <a href="{{ path('concert_edit', {'id': concert.id}) }}" class="btn btn-primary">Editer</a>
+    {{ include('concert/_delete_form.html.twig') }}
+
+    {% endif %}
+    </section>
+
+    {% include 'member/_list.html.twig' with {members:concert.getBand().getMembers()} only %}
+
+
+    {% include 'concert/footer.html.twig' with {scene:concert.getScene()} only %}
+
+{% endblock %}

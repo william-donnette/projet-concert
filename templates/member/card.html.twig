@@ -1,0 +1,6 @@
+<li style="margin:5px;display:flex;flex-direction:column;align-items:center">
+    <a style="border-radius:60px;width:120px;height:120px" href="{{ path('member_show', {'id': member.id}) }}">
+        <img style="border-radius:60px;width:120px;height:120px" src="https://thispersondoesnotexist.com/image?{{ random() }}">
+    </a>
+    <p>{{member.firstname~" "~member.lastname}}</p>
+</li>

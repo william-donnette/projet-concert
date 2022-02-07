@@ -1,0 +1,9 @@
+<ul style="display:flex;flex-wrap:wrap;list-style-type : none;justify-content:space-between">
+
+            {% for member in members %}
+
+                {% include 'member/card.html.twig' with {member:member} only %}
+
+            {% endfor %}
+
+</ul>

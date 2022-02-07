@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{path('concert_index')}}">Les supers concerts de Wily</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav" style="flex:1">
+      <li class="nav-item">
+        <a class="nav-link" style="color:#66615B" href="{{path('concert_index')}}">Accueil</a>
+      </li>
+      {% if app.user and app.user.isAdmin()%}
+<li class="nav-item">
+        <a class="nav-link" style="color:#66615B" href="{{path('member_index')}}">Artistes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#66615B" href="{{path('picture_index')}}">Pictures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#66615B" href="{{path('scene_index')}}">Scenes</a>
+      </li>
+
+      {% endif %}
+      <li class="nav-item" style="flex:1">
+        <a class="nav-link" style="color:#66615B" style="width:min-content" href="{{path('band_index')}}">Groupes</a>
+      </li>
+      {% if app.user %}
+      <li class="nav-item">
+      <a class="nav-link" style="color:#66615B" href="{{path('user_show')}}">
+        Bonjour {{app.user.firstname~" "~app.user.lastname}}
+      </a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link btn btn-link" style="color:#66615B;width:min-content" href="{{path('app_login')}}">Se Connecter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary" style="color:white;width:min-content" href="{{path('app_register')}}">S'Inscrire</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  
+</nav>

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Picture - {{picture.getAlternativeName()}}{% endblock %}
+
+{% block body %}
+    <h1>{{picture.getAlternativeName()}}</h1>
+
+    <section style="display:flex;flex-direction:column;align-items:center;width:100%">
+        {% include 'picture/card.html.twig' with {picture:picture} only %}
+    </section>
+
+    <section style="display:flex;flex-direction:row;margin:10px;width:100%;justify-content:space-between;">
+    <a href="{{ path('picture_index') }}">Retour à la liste</a>
+        {% if app.user and app.user.isAdmin() %}
+            <a href="{{ path('picture_edit', {'id': picture.id}) }}">Editer</a>
+
+            {{ include('picture/_delete_form.html.twig') }}
+
+        {% endif %}
+    </section>
+
+
+    
+{% endblock %}

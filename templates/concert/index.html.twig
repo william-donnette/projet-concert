@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concerts à Venir{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/rotating-card.css">
+    <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
+{% endblock %}
+
+{% block body %}
+
+    {% if app.user and app.user.isAdmin() %}
+    <a href="{{ path('concert_new') }}" class="btn btn-primary">Ajouter un concert</a>
+    {% endif %}
+
+    <h1>Concerts à venir</h1>
+
+    <div style="flex-wrap: wrap;display: flex;">
+            {% for concert in concerts %}
+                {% include 'concert/card.html.twig' with {concert:concert} only %}
+            {% endfor %}
+    </div>
+
+    <h1>Tous les concerts</h1>
+
+    <div style="flex-wrap: wrap;display: flex;">
+            {% for concert in others %}
+                {% include 'concert/card.html.twig' with {concert:concert} only %}
+            {% endfor %}
+    </div>
+    
+{% endblock %}

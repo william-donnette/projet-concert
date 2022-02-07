@@ -1,0 +1,4 @@
+<a href="{{ path('picture_show', {'id': picture.id}) }}" style="display:flex;flex-direction:column;align-items:center;">
+    <img style="border-radius:20px;width:240px;height:240px;object-fit:cover" src="/{{picture.getPath()}}">
+    <h1>{{picture.getAlternativeName()}}</h1>
+</a>

@@ -1,0 +1,62 @@
+     <div class="card-container col-md-4 col-sm-6">
+
+<div class="card">
+             <div class="front">
+                 <div class="cover">
+                     <img src="/{{band.getPicture().getPath()}}"/>
+                 </div>
+                 <div style="border-radius: 50%;display: block;height: 120px;margin: -55px auto 0;overflow: hidden;width: 120px;">
+                     <img style="object-fit: cover;width: 100%;height: 100%;" src="/{{band.getPicture().getPath()}}"/>
+                 </div>
+                 <div class="content">
+                     <div class="main">
+                         <h3 class="name">{{band.getName()}}</h3>
+                         <p class="profession">{{band.getCreatedAt().format('d/m/Y')}}</p>
+
+                         <p class="text-center">{{band.getName()}}, le groupe mythique à déjà produit {{band.getConcerts().count()}} concerts.</p>
+                     </div>
+                 </div>
+             </div> <!-- end front panel -->
+             <div class="back">
+                 <a href="{{ path('band_show', {'id': band.id}) }}" class="content">
+                    <div class="header">
+                        <h5 class="motto"></h5>
+                    </div>
+                     <div class="main">
+                         <h4 class="text-center">{{band.getName()}}</h4>
+                         <p class="text-center">Création du groupe : {{band.getCreatedAt().format('d/m/Y')}}</p>
+
+                         <div class="stats-container">
+                             <div class="stats">
+                                 <h4>{{band.getMembers().count}}</h4>
+                                 <p>
+                                     Membres
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>85</h4>
+                                 <p>
+                                     Hits
+                                 </p>
+                             </div>
+                             <div class="stats">
+                                 <h4>{{band.getConcerts().count()}}</h4>
+                                 <p>
+                                     Concerts
+                                 </p>
+                             </div>
+                         </div>
+
+                     </div>
+                 </a>
+                 <div class="footer" style="margin-top:0">
+                     <div class="social-links text-center">
+                         <a href="{{ path('band_show', {'id': band.id}) }}" class="btn btn-link">Voir</a>
+                        {% if app.user and app.user.isAdmin() %}
+                            <a href="{{ path('band_edit', {'id': band.id}) }}" class="btn btn-primary">Editer</a>
+                        {% endif %}
+                     </div>
+                 </div>
+             </div> <!-- end back panel -->
+         </div> <!-- end card -->
+              </div> <!-- end card-container -->

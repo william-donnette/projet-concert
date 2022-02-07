@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scène - {{scene.getAdress()}}{% endblock %}
+
+{% block body %}
+    <h1>{{scene.getAdress()}}</h1>
+
+
+
+<section style="display:flex;flex-direction:row;margin:10px;width:100%;justify-content:space-between;">
+    <a href="{{ path('scene_index') }}">Retour à la liste</a>
+        {% if app.user and app.user.isAdmin() %}
+            <a href="{{ path('scene_edit', {'id': scene.id}) }}">Modifier</a>
+
+    {{ include('scene/_delete_form.html.twig') }}
+
+        {% endif %}
+    </section>
+
+    
+{% endblock %}

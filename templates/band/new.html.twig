@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Création de Groupe{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau groupe</h1>
+
+    {{ include('band/_form.html.twig') }}
+
+    <a href="{{ path('band_index') }}">Retour à la liste</a>
+{% endblock %}

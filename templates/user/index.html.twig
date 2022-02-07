@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{app.user.firstname~" "~app.user.lastname}}{% endblock %}
+
+{% block body %}
+
+    {% include 'user/profil.html.twig' with {profil:app.user} only %}
+
+    <section style="display:flex;flex-direction:row;margin:10px;width:100%;justify-content:space-between;">
+
+        <a class="btn btn-danger" href="{{ path('app_logout') }}">Se déconnecter</a>
+
+    </section>
+
+{% endblock %}

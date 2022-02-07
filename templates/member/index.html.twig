@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artistes{% endblock %}
+
+{% block body %}
+    <h1>Tous les Artistes</h1>
+
+    {% if app.user and app.user.isAdmin() %}
+        <a href="{{ path('member_new') }}" class="btn btn-primary">Ajouter un artiste</a>
+    {% endif %}
+
+    {% include 'member/_list.html.twig' with {members:members} only %}
+
+{% endblock %}
