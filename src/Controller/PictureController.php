@@ -34,7 +34,7 @@ class PictureController extends AbstractController
             $file = $form['attachment']->getData();
             $picture->setName($file->getClientOriginalName());
             $newfile = $file->move(
-                'images',
+                'img',
                 $picture->getAlternativeName() . '.' . $file->getClientOriginalExtension()
             );
             $picture->setPath($newfile->getPathname());
@@ -71,7 +71,7 @@ class PictureController extends AbstractController
             $file = $form['attachment']->getData();
             $picture->setName($file->getClientOriginalName());
             $newfile = $file->move(
-                'images',
+                'img',
                 $picture->getAlternativeName() . '.' . $file->getClientOriginalExtension()
             );
             $picture->setPath($newfile->getPathname());
